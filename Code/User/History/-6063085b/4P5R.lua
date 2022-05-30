@@ -58,7 +58,7 @@ awful.keyboard.append_global_keybindings({
     { description = "open rofi", group = "launcher" }),
 
 	awful.key({ modkey }, "r", function()
-        awful.spawn(home_var .. "/.scripts/picker", false)
+        awful.spawn(home_var .. "/.scripts/awesome/picker", false)
 	end, 
     { description = "exec color picker", group = "launcher" }),
 
@@ -120,7 +120,7 @@ awful.keyboard.append_global_keybindings({
     awful.key({modkey }, "m", function() 
         misc.musicMenu()
     end,
-    {description = "open music menu", group = "control"}),
+    {description = "screenshot", group = "control"}),
 
 })
 
@@ -141,7 +141,7 @@ awful.keyboard.append_global_keybindings({
     awful.key({ modkey, shift }, "e", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
-    awful.key({ modkey, shift }, "q", function () require("mods.exit-screen") awesome.emit_signal('module::exit_screen:show') end,
+    awful.key({ modkey }, "v", function () require("mods.exit-screen") awesome.emit_signal('module::exit_screen:show') end,
               {description = "show exit screen", group = "modules"}),
 
 })

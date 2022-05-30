@@ -58,7 +58,7 @@ awful.keyboard.append_global_keybindings({
     { description = "open rofi", group = "launcher" }),
 
 	awful.key({ modkey }, "r", function()
-        awful.spawn(home_var .. "/.scripts/picker", false)
+        awful.spawn(home_var .. "/.scripts/awesome/picker", false)
 	end, 
     { description = "exec color picker", group = "launcher" }),
 
