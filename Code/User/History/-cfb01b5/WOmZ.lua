@@ -14,7 +14,7 @@ return {
 
     -- images
     bell = directory .. "bell.png",
-    profile = "/var/lib/AccountsService/icons/" .. os.getenv('USER'),
+    profile = "/var/lib/AccountsService/icons" .. os.getenv('USER'),
     music_icon = directory .. "music.png",
     album_art = directory .. "album-art.png",
     awesome = directory .. "awesome.png",
@@ -28,5 +28,5 @@ return {
     },
 
     -- wallpapers
-    wall = directory .."walls/default",
+    wall = directory .."walls/" .. ui_vars.color_scheme .. ".png",
 }

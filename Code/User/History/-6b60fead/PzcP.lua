@@ -89,28 +89,8 @@ local prev_button = wibox.widget{
 -- update widgets
 -- ~~~~~~~~~~~~~~
 
-local playerctl = require('mods.bling').signal.playerctl.cli()
-
-playerctl:connect_signal("metadata",
-                       function(_, title, artist, album_path, album, new, player_name)
-
-    if title == "" then
-		song_name:set_markup_silently(helpers.colorize_text("None", beautiful.fg_color))
-    else
-        song_name:set_markup_silently(helpers.colorize_text(title, beautiful.fg_color))
-	end
-	if artist == "" then
-        song_artist:set_markup_silently(helpers.colorize_text("Unknown", beautiful.fg_color))
-    else
-        song_artist:set_markup_silently(helpers.colorize_text(artist, beautiful.fg_color))
-	end
-	if album_path == "" then
-        album_art:set_image(gears.surface.load_uncached(beautiful.images.album_art))
-    else
-        album_art:set_image(gears.surface.load_uncached(album_path))
-	end 
-
-end)
+local playerctl = require("mods.bling").signal.playerctl.lib()
+playerctl.enable()
 
 local toggle_command = function() playerctl:play_pause() end
 local prev_command = function() playerctl:previous() end
@@ -124,6 +104,24 @@ next_button:buttons(gears.table.join(
 
 prev_button:buttons(gears.table.join(
     awful.button({}, 1, function() prev_command() end)))
+
+playerctl:connect_signal("metadata", function(_, title, artist, album_path, __, ___, ____)
+	if title == "" then
+		title = "None"
+	end
+	if artist == "" then
+		artist = "Unknown"
+	end
+	if album_path == "" then
+		album_path = beautiful.images.album_art
+	end
+
+	album_art:set_image(gears.surface.load_uncached(album_path))
+    song_name:set_markup_silently(helpers.colorize_text(title, beautiful.fg_color))
+	song_artist:set_markup_silently(helpers.colorize_text(artist, beautiful.fg_color))
+
+
+end)
 
 playerctl:connect_signal("playback_status", function(_, playing, __)
 	if playing then

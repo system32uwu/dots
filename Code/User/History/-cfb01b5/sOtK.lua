@@ -28,5 +28,5 @@ return {
     },
 
     -- wallpapers
-    wall = directory .."walls/default",
+    wall = directory .."walls/" .. ui_vars.color_scheme .. ".png",
 }
