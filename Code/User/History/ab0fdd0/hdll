@@ -10,6 +10,7 @@ Code/GPUCache
 Code/Local Storage
 Code/logs
 Code/Service Worker
+Code/Session Storage
 Code/code.lock
 Code/Cookies
 Code/Cookies-journal
@@ -18,6 +19,3 @@ Code/Network Persistent State
 Code/QuotaManager
 Code/QuotaManager-journal
 Code/TransportSecurity
-
-Code/User/globalStorage
-Code/User/workspaceStorage
